@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bookRouter = require("./routes/bookRouter");
 const magazineRouter = require("./routes/magazineRouter");
+const path = require("path");
 
 const app = express();
 
@@ -27,7 +28,20 @@ app.use(cors(corsOptions));
 //Body parser, Reading data from the body into req.body
 app.use(express.json({ limit: "10kb" }));
 
+console.log(__dirname);
+
 //Serving static files
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "../client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
+
 app.use(express.static(`${__dirname}/public`));
 
 //Routes

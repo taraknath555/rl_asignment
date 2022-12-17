@@ -8,7 +8,7 @@ module.exports = () => {
     if (fs.existsSync(`./data/${file}.json`)) return;
 
     const fileData = [];
-    fs.createReadStream(`public/files/${file}.csv`)
+    fs.createReadStream(`./public/files/${file}.csv`)
       .pipe(csv())
       .on("data", (row) => {
         const valuesArr = Object.values(row)[0].split(";");
@@ -24,7 +24,7 @@ module.exports = () => {
       .on("end", () => {
         fs.writeFile(`./data/${file}.json`, JSON.stringify(fileData), (err) => {
           if (err) console.log(err);
-          console.log("file written");
+          else console.log("file written");
         });
       });
   });
