@@ -55,8 +55,8 @@ const Content = (props) => {
     <div>No Data Found</div>
   ) : (
     <div className="books-item">
-      {data.map((d) => (
-        <Card>
+      {data.map((d, i) => (
+        <Card key={i}>
           <Card.Body>
             <Card.Title>{d.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
