@@ -12,7 +12,11 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-const whitelist = ["http://localhost:3001", "http://localhost:3000"];
+const whitelist = [
+  "http://localhost:3001",
+  "http://localhost:3000",
+  "https://yellow-agouti-gear.cyclic.app",
+];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
