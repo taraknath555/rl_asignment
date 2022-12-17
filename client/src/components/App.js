@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Books from "./Books";
-import Magazines from "./Magazines";
-import Home from "./Home";
-import BookAndMagazine from "./BookAndMagazine";
+import Books from "../pages/Books";
+import Magazines from "../pages/Magazines";
+import Home from "../pages/Home";
+import BookAndMagazine from "../pages/BookAndMagazine";
 
 const App = () => {
   return (

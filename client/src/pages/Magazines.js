@@ -13,6 +13,7 @@ const Megazines = () => {
     fetchMegazines();
   }, []);
   const fetchMegazines = async (targetFind = "", inputValue = "") => {
+    setNoData(false);
     const finalUrl =
       inputValue && targetFind ? `${url}?${targetFind}=${inputValue}` : url;
     const { data } = await axios.get(finalUrl);

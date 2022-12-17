@@ -14,6 +14,7 @@ const BookAndMagazine = () => {
   }, []);
 
   const fetchData = async (targetFind = "", inputValue = "") => {
+    setNoData(false);
     const finalBookUrl =
       inputValue && targetFind
         ? `${bookUrl}?${targetFind}=${inputValue}`
