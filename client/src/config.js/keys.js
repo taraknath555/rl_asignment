@@ -1,6 +1,6 @@
 const isLive = process.env.REACT_APP_ENV === "live";
 const server = isLive
-  ? process.env.REACT_APP_BACKEND_SERVER
+  ? "https://yellow-agouti-gear.cyclic.app"
   : "http://localhost:5000";
 
 module.exports = {
