@@ -24,6 +24,7 @@ const Megazines = () => {
   return (
     <Content
       data={megazines}
+      setData={setMegazines}
       fetchCallback={fetchMegazines}
       dataName="megazines"
       noData={noData}

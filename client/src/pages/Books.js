@@ -24,6 +24,7 @@ const Books = () => {
   return (
     <Content
       data={books}
+      setData={setBooks}
       fetchCallback={fetchBooks}
       dataName="books"
       noData={noData}

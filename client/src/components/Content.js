@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSVLink } from "react-csv";
 import {
   Button,
@@ -17,7 +17,7 @@ const Content = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [targetFind, setTargetFind] = useState("author");
 
-  const { data, fetchCallback, dataName, noData } = props;
+  const { data, setData, fetchCallback, dataName, noData } = props;
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -26,6 +26,10 @@ const Content = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchCallback(targetFind, inputValue);
+  };
+
+  const handleSort = () => {
+    setData([...data.sort((a, b) => a.title.localeCompare(b.title))]);
   };
 
   const csvData = data.length
@@ -110,7 +114,11 @@ const Content = (props) => {
           />
           <Button type="submit">Find</Button>
         </Form>
+        <Button variant="info" onClick={handleSort}>
+          sort
+        </Button>
       </InputGroup>
+
       <CSVLink {...csvLink}>Download as CSV</CSVLink>
       <div>{renderContent}</div>
     </Container>

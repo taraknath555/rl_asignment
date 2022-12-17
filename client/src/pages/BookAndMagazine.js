@@ -34,6 +34,7 @@ const BookAndMagazine = () => {
   return (
     <Content
       data={data}
+      setData={setData}
       fetchCallback={fetchData}
       dataName="magbooks"
       noData={noData}
