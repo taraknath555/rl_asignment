@@ -6,6 +6,12 @@ module.exports = () => {
 
   seedFiles.forEach((file) => {
     if (fs.existsSync(`./data/${file}.json`)) return;
+    else {
+      const dir = "./data";
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
+    }
 
     const fileData = [];
     fs.createReadStream(`./public/files/${file}.csv`)
