@@ -31,8 +31,6 @@ app.use(express.json({ limit: "10kb" }));
 console.log(__dirname);
 
 //Serving static files
-app.use(express.static(path.join(__dirname, "./client/build")));
-
 app.use(express.static(`${__dirname}/public`));
 
 //Routes
