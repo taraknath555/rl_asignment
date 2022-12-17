@@ -31,16 +31,7 @@ app.use(express.json({ limit: "10kb" }));
 console.log(__dirname);
 
 //Serving static files
-app.use(express.static(path.join(__dirname, "../client/build")));
-
-app.get("*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "../client/build/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
-});
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -48,6 +39,14 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use("/api/v1/books", bookRouter);
 app.use("/api/v1/magazines", magazineRouter);
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
 
 // app.all("*", (req, res, next) => {
 //   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
